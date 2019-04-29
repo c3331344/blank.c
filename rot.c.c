@@ -39,18 +39,17 @@ int main() {
 void Cipher(char* InputText, int Key) { //where the previous function is defined
     int i=0, ShuffleValue; //intialising i to equal 0, and ShuffleValue as ints
     char cipher; //cipher is intitialised as a char
-    while(InputText[i]!='\0'&&strlen(InputText)-1>i) { 
-        if(InputText[i]>=32&&InputText[i]<=64||InputText[i]>=91&&InputText[i]<=126) {
-            ShuffleValue=((int)InputText[i]);
-            cipher=(char)(ShuffleValue);
-            printf("%c", cipher);
-            //InputText[i]<=64&&InputText[i]>=91 just coz im lazy
+    while(InputText[i]!='\0'&&strlen(InputText)-1>i) { //while loop that operates so long as a character of the inputted textdoesnt equal null, and the total number of inputted characters minus 1, is greater than the i value.
+        if(InputText[i]>=32&&InputText[i]<=64||InputText[i]>=91&&InputText[i]<=126) { //the if statement asks if inputted text value is greater than or equal to 32 and less than or equal to 64, or if its greater than or equal to 91 and less than or equal to 126, then those characters get printed without editting. e.g whitespaces
+            ShuffleValue=((int)InputText[i]); //we let ShuffleValue equal the inputted text characters int value unchanged. 
+            cipher=(char)(ShuffleValue); //we then let cipher equal ShuffleValues characters char value
+            printf("%c", cipher); //and then thencipher is prited to the screen.
         }
         else {
-            ShuffleValue=((int)InputText[i]-65+Key) % 26+65;
-            cipher=(char)(ShuffleValue);
-            printf("%c", cipher);
+            ShuffleValue=((int)InputText[i]-65+Key) % 26+65; //the ShuffleValue equals the inutted text characters int value, butit has been subtracted by 65 and then the Key value was added. The -65 uses the ascii code of capital letters to zer0 them, and the Key value shuffles the alphabet to the right.
+            cipher=(char)(ShuffleValue); //cipher then equals the char character value of ShuffleValue
+            printf("%c", cipher); //cipher is then printed
         }
-        i++;
+        i++; //i is added to by one until it is greater than the total number of inputted characters.
     }
 }
